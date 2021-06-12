@@ -3,6 +3,8 @@
 source "/vagrant/scripts/common.sh"
 
 function customInstallation {
+	sudo cp -f /vagrant/resources/custom/key.pub /root/.ssh/authorized_keys
+    
 	#apt-get upgrade -y
 	#apt update
 	#apt install software-properties-common -y 
@@ -30,7 +32,9 @@ function customInstallation {
     pip install --user zeep
     pip install --user confluent_kafka
     pip install --user hdfs
-
+    #export PYSPARK_PYTHON=/usr/bin/python3.7
+	echo "export PYSPARK_PYTHON=/usr/bin/python3.7" >> /etc/profile
+	
 }
 
 function setupUtilities {
@@ -58,4 +62,3 @@ echo "setup netstat"
 setupNetStat
 echo "customInstallation"
 customInstallation
-export PYSPARK_PYTHON=/usr/bin/python3.7

@@ -1,0 +1,53 @@
+{
+	"debug": {
+		"write_operations": true,
+		"print": true,
+		"timing_and_profile": false
+	},
+	"app": {
+		"name": "app_name",
+		"code" : -1,
+		"exit_code" : 0,
+		"validity_minutes": 5,
+		"continue_if_except" : false,
+		"stop_and_continue_if_except": false,
+		"createhivetable": false,
+		"readdata_threaded" : false,
+		"builddataframe_threaded": false,
+		"writedatatohdfs_threaded": false,
+		"builddataframe_union": false,
+		"builddataframe_union_limit_df_size": -1,
+		"writedatatohive_threaded": false,
+		"writedatatodb_threaded" : false,
+		"max_pool_thread" : 3,
+		"db_logger": true,
+		"init_spark": true
+	},
+	"db": {
+		"type": "POSTGRES",
+		"host" : "plutonet.synology.me",
+		"port" : "5432",
+		"database" : "postgres",
+		"schema" : "rsm",
+		"driver" : "org.postgresql.Driver",
+		"user" : "pg_user",
+		"password" : "PG!Us3r",
+		"jar_filepath" : "postgresql-42.2.14.jar",
+		"log_table" : "rsm.log",
+		"log_table_hdfs": "rsm.log_hdfs",
+		"param":{"url":"jdbc:postgresql://plutonet.synology.me:5432/postgres", "user":"pg_user", "password":"PG!Us3r"},
+		"postgres_param":{"user": "pg_user","password": "PG!Us3r","driver": "org.postgresql.Driver"},
+		"postgres_url":"jdbc:postgresql://plutonet.synology.me:5432/postgres"
+	},
+	"hdfs": {
+		"url": "http://127.0.0.1:50070",
+		"username": "root"
+	},
+	"hive": {
+		"db": "rsm",
+		"file_format": "orc"
+	},
+	"log": {
+		"local_folder": "/tmp"
+	}
+}

@@ -1,0 +1,58 @@
+{
+	"app": {
+		"name" : "Example",
+		"code" : 55,
+		"createhivetable": true,
+		"validity_minutes" : 1440,
+		"continue_if_except" : true,
+		"readdata_threaded" : false,
+		"writedatatooracle_threaded" : false,
+		"max_pool_thread" : 6,
+		"custom_method" : true
+	},
+	"log": {
+		"filename": "Example%Y%m%d%H%M%S%f.log",
+		"local_folder": "/tmp",
+		"remote_folder": "/rsm/log/Example/%Y/%m/%d/%H"
+	},
+	"common": {
+		"service" : {
+			"ingestion" : {
+				"db": {
+					"spark": true,
+					"mode" : "overwrite"
+				},
+				"hive": {
+					"db": "rsm",
+						"mode": "append"
+					}
+			}
+			}
+		},
+	"service": [{
+		"url": "http://demo9666585.mockable.io/anagraficaOperatori",
+		"type": "JSON",
+		"timeout": 3600,
+		"method" : "GET",
+		"raw": {
+			"hdfs": {
+				"path": "/rsm/storage/Example/%Y/%m/%d/%H",
+				"filename": "Example%Y%m%d%H%M%S%f.json"
+			}
+		},
+		"ingestion": [
+			{
+			    "id_ingestion": "_1_",
+				"db": {
+					"table": "Example"
+				},
+				"hive": {
+					"table": "Example",
+					"location": "/rsm/hive/Example/",
+					"partitions": "['year', 'month', 'day', 'hour']",
+					"schema": "StructType( [StructField( 'id', IntegerType() ), StructField( 'linea', StringType() ), StructField( 'stazione', StringType() ), StructField( 'acronimo', StringType() ), StructField( 'ordine', FloatType() ), StructField( 'id_tornello', IntegerType() ), StructField( 'validazioni', DecimalType() ), StructField( 'datetime', TimestampType() ), StructField( 'isfestivita', BooleanType() ), StructField( 'ts_ingestion', TimestampType() ), StructField( 'year', IntegerType() ), StructField( 'month', IntegerType() ), StructField( 'day', IntegerType() ), StructField( 'hour', IntegerType() )])"
+				}
+			}
+		]
+	}]
+}
