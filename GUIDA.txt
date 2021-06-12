@@ -1,0 +1,21 @@
+- Installare Docker (oppure in alternativa Virtualbox)
+
+- Installare Vagrant
+
+- Lanciare da terminale il comando :
+  vagrant up --provider=docker
+
+- Collegarsi alla macchina utilizzando
+  host : localhost
+  user : root
+  private-key : .../vagrant-hadoop-hive-spark/resources/custom/key
+  
+- tutto il contenuto della macchina virtuale alla cartella /vagrant/ è sincronizzato con .../vagrant-hadoop-hive-spark/
+
+- gli script si trovano in /vagrant/python_script
+  lanciare :
+    hive -e 'create table rsm;'        #crea la tabella rsm in hive
+	spark-submit service_impl.py       #esegue uno script di test del pattern
+	python3.7 test_hdfs.py             #esegue uno script di test hdfs
+
+
