@@ -8,6 +8,10 @@ source "/vagrant/scripts/versions.sh"
 # Curl options
 CURL_OPTS="-Ss --retry 10 "
 
+# python
+PYTHON_ARCHIVE=Python-$PYTHON_VERSION.tgz
+PYTHON_MIRROR_DOWNLOAD=https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
+
 # java
 JAVA_ARCHIVE=jdk-8u51-linux-x64.gz
 JAVA_MYSQL_CONNECTOR_VERSION=5.1.40

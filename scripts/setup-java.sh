@@ -8,7 +8,7 @@ function installRemoteJava {
 
 function setupEnvVars {
 	echo "creating java environment variables"
-     	echo "Setting JAVA_HOME"
+    echo "Setting JAVA_HOME"
 	JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:/bin/java::")
 	ln -s ${JAVA_HOME} /usr/local/java
         echo "export JAVA_HOME=/usr/local/java" >> /etc/profile.d/java.sh
@@ -18,6 +18,7 @@ function setupEnvVars {
 
 function setupMysqlConnector {
 	echo "Mysql java connector setup"
+	echo ${CURL_OPTS} -o ${JAVA_HOME}/lib/ext/${JAVA_MYSQL_CONNECTOR_JAR} -O -L ${JAVA_MYSQL_CONNECTOR_DOWNLOAD}
 	curl ${CURL_OPTS} -o ${JAVA_HOME}/lib/ext/${JAVA_MYSQL_CONNECTOR_JAR} -O -L ${JAVA_MYSQL_CONNECTOR_DOWNLOAD}
 }
 

@@ -7,6 +7,7 @@
 
 - Collegarsi alla macchina utilizzando
   host : localhost
+  port : 2222
   user : root
   private-key : .../vagrant-hadoop-hive-spark/resources/custom/key
   
@@ -19,3 +20,17 @@
 	python3.7 test_hdfs.py             #esegue uno script di test hdfs
 
 
+------------------------------------
+
+Se compare l'errore :
+
+Temporary failure resolving 'archive.ubuntu.com'
+W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+
+probabilmente c'è un problema di proxy
+
+lanciare :
+  sudo vim /etc/resolv.conf
+
+ed sostituire nameserver con 
+  nameserver 8.8.8.8

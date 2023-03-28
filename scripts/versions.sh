@@ -15,7 +15,6 @@ HBASE_VERSION=1.4.8
 # spark
 SPARK_VERSION=spark-2.3.0
 
-
 # sqoop 
 SQOOP_RELEASE=sqoop-1.4.7.bin__hadoop-2.6.0
 
@@ -30,3 +29,7 @@ FLUME_VERSION=1.7.0
 
 # Zeppelin 
 ZEPPELIN_VERSION=0.8.0
+
+# Python
+#PYTHON_VERSION=3.8.12
+PYTHON_VERSION=3.7.9
