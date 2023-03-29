@@ -10,7 +10,7 @@ function installLocalPython {
 
 function installRemotePython {
 	echo "install Python from remote file"
-	curl ${CURL_OPTS} -o /vagrant/resources/$PYTHON_ARCHIVE -O -L $PYTHON_MIRROR_DOWNLOAD
+	curl ${CURL_OPTS} -k -o /vagrant/resources/$PYTHON_ARCHIVE -O -L $PYTHON_MIRROR_DOWNLOAD
 	tar -xzf /vagrant/resources/$PYTHON_ARCHIVE -C /usr/local
 }
 
