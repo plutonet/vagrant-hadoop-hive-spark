@@ -67,7 +67,9 @@ MYSQL_ROOT_PASSWORD=root
 
 # sqoop 
 SQOOP_ARCHIVE=${SQOOP_RELEASE}.tar.gz
-SQOOP_MIRROR_DOWNLOAD=http://mirror.ox.ac.uk/sites/rsync.apache.org/sqoop/1.4.7/${SQOOP_ARCHIVE}
+#SQOOP_MIRROR_DOWNLOAD=http://mirror.ox.ac.uk/sites/rsync.apache.org/sqoop/1.4.7/${SQOOP_ARCHIVE}
+SQOOP_MIRROR_DOWNLOAD=https://archive.apache.org/dist/sqoop/1.4.7/${SQOOP_ARCHIVE}
+
 SQOOP_RES_DIR=/vagrant/resources/sqoop
 
 # Tez

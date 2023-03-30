@@ -34,3 +34,31 @@ lanciare :
 
 ed sostituire nameserver con 
   nameserver 8.8.8.8
+
+---------------------------
+
+per riavviare i servizi:
+
+set password :
+
+passwd root
+vi /etc/ssh/sshd_config
+  PermitRootLogin yes
+
+
+cd /usr/local/spark-2.3.0-bin-hadoop2.7/sbin/
+./stop-all.sh
+./start-all.sh
+
+cd $HIVE_HOME
+hive --service metastore &
+
+---------------------------
+Setting Sqoop
+
+export TEZ_CONF_DIR/usr/local/tez/conf
+export TEZ_JARS=/usr/local/tez/*:/usr/local/tez/lib/*
+export HADOOP_CLASSPATH=/vagrant/python_script/jar/commons-collections4-4.4.jar:/vagrant/python_script/jar/ojdbc8.jar
+export HADOOP_CLASSPATH=$TEZ_CONF_DIR:$TEZ_JARS:$HADOOP_CLASSPATH
+
+sqoop import --connect jdbc:oracle:thin:@10.64.20.10:1521/dssdbsvi --username geodss_adt  --password AnAsOracledbSvilTgt --query 'SELECT * FROM GEODSS_ADT.DM_INDICATORI_RIF where $CONDITIONS' --delete-target-dir --target-dir hdfs://node1:8020/demo/test/202303 -m 1
