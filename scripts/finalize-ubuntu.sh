@@ -3,7 +3,8 @@
 source "/vagrant/scripts/common.sh"
 
 function customInstallation {
-	sudo cp -f /vagrant/resources/custom/key.pub /root/.ssh/authorized_keys
+	sudo cp -f /vagrant/resources/custom/key.pub /root/.ssh/authorized_keys	
+	sudo sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config	
 }
 
 function setupUtilities {

@@ -98,6 +98,9 @@ ZEPPELIN_MIRROR_DOWNLOAD=http://www-eu.apache.org/dist/zeppelin/zeppelin-${ZEPPE
 ZEPPELIN_RES_DIR=/vagrant/resources/zeppelin
 ZEPPELIN_TARGET=/home/ubuntu
 
+# Nifi
+NIFI_ARCHIVE=nifi-${NIFI_VERSION}-bin.tar.gz
+NIFI_MIRROR_DOWNLOAD=https://archive.apache.org/dist/nifi/${NIFI_VERSION}/nifi-${NIFI_VERSION}-bin.tar.gz
 
 # Utility functions
 function resourceExists {

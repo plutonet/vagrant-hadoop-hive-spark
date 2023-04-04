@@ -43,10 +43,10 @@ set password :
 
 passwd root
 vi /etc/ssh/sshd_config
-  PermitRootLogin yes
+PermitRootLogin yes
 
 
-cd /usr/local/spark-2.3.0-bin-hadoop2.7/sbin/
+cd /usr/local/hadoop-2.7.6/sbin
 ./stop-all.sh
 ./start-all.sh
 
@@ -56,9 +56,19 @@ hive --service metastore &
 ---------------------------
 Setting Sqoop
 
-export TEZ_CONF_DIR/usr/local/tez/conf
-export TEZ_JARS=/usr/local/tez/*:/usr/local/tez/lib/*
-export HADOOP_CLASSPATH=/vagrant/python_script/jar/commons-collections4-4.4.jar:/vagrant/python_script/jar/ojdbc8.jar
-export HADOOP_CLASSPATH=$TEZ_CONF_DIR:$TEZ_JARS:$HADOOP_CLASSPATH
+	export TEZ_CONF_DIR/usr/local/tez/conf
+	export TEZ_JARS=/usr/local/tez/*:/usr/local/tez/lib/*
+	export HADOOP_CLASSPATH=/vagrant/python_script/jar/commons-collections4-4.4.jar:/vagrant/python_script/jar/ojdbc8.jar
+	export HADOOP_CLASSPATH=$TEZ_CONF_DIR:$TEZ_JARS:$HADOOP_CLASSPATH
 
 sqoop import --connect jdbc:oracle:thin:@10.64.20.10:1521/dssdbsvi --username geodss_adt  --password AnAsOracledbSvilTgt --query 'SELECT * FROM GEODSS_ADT.DM_INDICATORI_RIF where $CONDITIONS' --delete-target-dir --target-dir hdfs://node1:8020/demo/test/202303 -m 1
+
+
+Sark UI								http://localhost:18080/?showIncomplete=false
+YARN Resource Manager				http://localhost:8088/cluster
+									http://localhost:8042/node
+									http://localhost:19888/jobhistory
+NameNode WebUI						http://localhost:50070
+DataNode WebUI						http://localhost:50075
+HIVE_HOME							http://localhost:10002/
+Nifi								http://localhost:8080/nifi/
