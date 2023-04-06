@@ -72,3 +72,9 @@ NameNode WebUI						http://localhost:50070
 DataNode WebUI						http://localhost:50075
 HIVE_HOME							http://localhost:10002/
 Nifi								http://localhost:8080/nifi/
+
+------
+Avviare Nifi
+
+cd /usr/local/nifi-1.13.2/bin/
+./nifi.sh start
