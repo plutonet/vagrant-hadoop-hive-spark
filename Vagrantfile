@@ -20,8 +20,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		  "8042:8042",
 		  "8080:8080",
 		  "8088:8088",
-		  "9083:9083",
-		  "10000:10000",
 		  "10002:10002",
 		  "10020:10020",
 		  "10033:10033",
@@ -31,9 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		  "37485:37485",
 		  "42205:42205",
 		  "50010:50010",
-		  "50020:50020",
-		  "50070:50070",
-		  "50075:50075"
+		  "50020:50020"
 		]
     end
     config.vm.provider "virtualbox" do |v, override|
