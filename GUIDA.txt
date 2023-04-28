@@ -47,13 +47,18 @@ PermitRootLogin yes
 
 
 cd /usr/local/hadoop-2.7.6/sbin
-./stop-all.sh
-./start-all.sh
+
+echo password | ./stop-all.sh
+echo password | ./start-all.sh
+password
 
 cd $HIVE_HOME
 hive --service metastore &
 
+hive --service hiveserver2 --hiveconf hive.server2.thrift.port=10000 --hiveconf hive.root.logger=INFO,console &
+
 ---------------------------
+
 Setting Sqoop
 
 	export TEZ_CONF_DIR/usr/local/tez/conf
@@ -63,6 +68,9 @@ Setting Sqoop
 
 sqoop import --connect jdbc:oracle:thin:@10.64.20.10:1521/dssdbsvi --username geodss_adt  --password AnAsOracledbSvilTgt --query 'SELECT * FROM GEODSS_ADT.DM_INDICATORI_RIF where $CONDITIONS' --delete-target-dir --target-dir hdfs://node1:8020/demo/test/202303 -m 1
 
+---------------------------
+
+sudo netstat -lntup
 
 Sark UI								http://localhost:18080/?showIncomplete=false
 YARN Resource Manager				http://localhost:8088/cluster
